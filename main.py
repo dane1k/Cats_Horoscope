@@ -17,12 +17,9 @@ def start(message):
     random_value = funny_forecasts[random_key]
     bot.send_message(chat_id, f'{random_value}')
 
-    while True:
-        now = datetime.datetime.now()
-        if now.hour == 12 and now.minute == 0:
-            bot.send_message(chat_id, "Your message there.")
-
-        time.sleep(60)  # pause for 1 minute
+    now = datetime.datetime.now()
+    if now.hour == 12 and now.minute == 0:
+        bot.send_message(chat_id, "Your message there.")
 
 
 bot.polling()
