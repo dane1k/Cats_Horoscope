@@ -2,14 +2,13 @@
 import datetime
 import random
 import telebot
-import time
 from Zodiac_Signs import funny_forecasts
 
 #bot token
 TOKEN = '6692357135:AAGj7Fs2tD8Gah-Bcnj1JMUAVkrFgdGzPa0'
 bot = telebot.TeleBot(TOKEN)
 
-
+# button
 keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 forecast_button = telebot.types.KeyboardButton("Forecasts")
 keyboard.add(forecast_button)
