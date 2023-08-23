@@ -1,6 +1,0 @@
-# Data Base for UX
-
-
-
-
-
