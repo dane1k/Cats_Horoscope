@@ -17,7 +17,7 @@ keyboard.add(forecast_button)
 
 keyboard2 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 post_button = telebot.types.KeyboardButton("/post")
-keyboard.add(post_button)
+keyboard2.add(post_button)
 
 
 @bot.message_handler(commands=['start'])
