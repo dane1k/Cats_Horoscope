@@ -24,4 +24,4 @@ jobs:
       - name: execute main.py
         env:
           BOTTELEGRAMTOKEN: ${{ secrets.BOTTELEGRAMTOKEN }}
-        run: python newsGenerator.py
+        run: python main.py
