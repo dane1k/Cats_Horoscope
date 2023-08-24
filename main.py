@@ -17,7 +17,7 @@ keyboard.add(forecast_button)
 
 keyboard2 = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 post_button = telebot.types.KeyboardButton("/post")
-keyboard2.add(post_button)
+keyboard.add(post_button)
 
 
 @bot.message_handler(commands=['start'])
@@ -40,14 +40,10 @@ def post_message(message):
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
 def send_forecast(message):
     chat_id = message.chat.id
-    now = datetime.datetime.now()
-    if now.hour == 23 and now.minute == 18:
-        random_key = random.choice(list(funny_forecasts.keys()))
-        random_value = funny_forecasts[random_key]
-        bot.send_message(chat_id, f'{random_value}')
-    else:
-        return "No forecast available at the moment."
-    
+    random_key = random.choice(list(funny_forecasts.keys()))
+    random_value = funny_forecasts[random_key]
+    bot.send_message(chat_id, f'{random_value}')
+
     return f"Thank you for reading our horoscope"
 
 
