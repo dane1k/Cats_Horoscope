@@ -5,7 +5,7 @@ import telebot
 from Zodiac_Signs import funny_forecasts
  
 #bot token 
-TOKEN = '6692357135:AAGj7Fs2tD8Gah-Bcnj1JMUAVkrFgdGzPa0'
+TOKEN = ${{ secrets.MY_SECRET_TOKEN }}
 bot = telebot.TeleBot(TOKEN)
 
 
