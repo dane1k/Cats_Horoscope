@@ -30,6 +30,8 @@ def start(message):
 
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
 def send_forecast(message):
+    global random_value
+    global random_key
     chat_id = group_chat_id
     random_key = random.choice(list(funny_forecasts.keys()))
     random_value = funny_forecasts[random_key]
@@ -37,6 +39,6 @@ def send_forecast(message):
 
     return f"Thank you for reading our horoscope"
 
-send_forecast()
+
 # This line starts the bot polling for updates
 bot.polling()
