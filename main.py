@@ -1,7 +1,5 @@
 # SQLkiss Cat's Horoscope
 import random
-import time
-from decouple import config
 import telebot
 from Zodiac_Signs import funny_forecasts
  
