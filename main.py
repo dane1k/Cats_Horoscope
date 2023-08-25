@@ -1,6 +1,8 @@
 # SQLkiss Cat's Horoscope
 import random
 import telebot
+import schedule
+import time
 from Zodiac_Signs import funny_forecasts
  
 #bot token 
@@ -39,6 +41,12 @@ def send_forecast(message):
 
     return f"Thank you for reading our horoscope"
 
+schedule.every().day.at("10:50").do(send_forecast)
 
+if __name__ == "__main__":
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+        
 # This line starts the bot polling for updates
 bot.polling()
