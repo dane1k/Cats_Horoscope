@@ -23,5 +23,5 @@ jobs:
 
       - name: execute main.py
         env:
-          BOTTELEGRAMTOKEN: ${{ secrets.BOTTELEGRAMTOKEN }}
+          BOT_TELEGRAM_TOKEN_FOR_CODE: ${{ secrets.BOT_TELEGRAM_TOKEN_FOR_CODE }}
         run: python main.py

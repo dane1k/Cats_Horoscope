@@ -5,7 +5,7 @@ import telebot
 from Zodiac_Signs import funny_forecasts
  
 #bot token 
-TOKEN = BOTTELEGRAMTOKEN # YOUR TOKEN
+TOKEN = '6692357135:AAGj7Fs2tD8Gah-Bcnj1JMUAVkrFgdGzPa0' # You have to add your token of bot there
 bot = telebot.TeleBot(TOKEN)
 group_chat_id = '-1001760424253' #
                                  #CHAT GROUP ID: how to find this:
