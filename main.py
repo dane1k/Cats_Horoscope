@@ -37,6 +37,6 @@ def send_forecast(message):
 
     return f"Thank you for reading our horoscope"
 
-
+send_forecast()
 # This line starts the bot polling for updates
 bot.polling()
