@@ -20,8 +20,3 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: execute main.py
-        env:
-          BOT_TELEGRAM_TOKEN_FOR_CODE: ${{ secrets.BOT_TELEGRAM_TOKEN_FOR_CODE }}
-        run: python main.py
