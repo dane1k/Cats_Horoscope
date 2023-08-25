@@ -41,12 +41,16 @@ def send_forecast(message):
 
     return f"Thank you for reading our horoscope"
 
-schedule.every().day.at("10:50").do(send_forecast)
+def post_forecast():
+    chat_id = group_chat_id
+    send_forecast(chat_id)
+
+schedule.every().day.at("11:00").do(post_forecast)
 
 if __name__ == "__main__":
     while True:
         schedule.run_pending()
         time.sleep(1)
-        
+
 # This line starts the bot polling for updates
 bot.polling()
