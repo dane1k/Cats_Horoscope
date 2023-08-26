@@ -45,12 +45,14 @@ def post_forecast():
     chat_id = group_chat_id
     send_forecast(chat_id)
 
+
 schedule.every().day.at("12:49").do(post_forecast)
 
 if __name__ == "__main__":
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    post_forecast()
+#     while True:
+#         schedule.run_pending()
+#         time.sleep(1)
 
-# This line starts the bot polling for updates
-bot.polling()
+# # This line starts the bot polling for updates
+# bot.polling()
