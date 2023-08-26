@@ -2,11 +2,15 @@
 import random
 import telebot
 import schedule
-import time
+import sys
+import os
 from Zodiac_Signs import funny_forecasts
  
 #bot token 
-TOKEN = '6692357135:AAGj7Fs2tD8Gah-Bcnj1JMUAVkrFgdGzPa0' # You have to add your token of bot there
+TOKEN = os.environ.get('BOT_TELEGRAM_TOKEN_FOR_CODE', 'nothing')
+if TOKEN == 'nothing':
+    sys.exit("TOKEN not accept")
+    
 bot = telebot.TeleBot(TOKEN)
 group_chat_id = '-1001760424253' #
                                  #CHAT GROUP ID: how to find this:
