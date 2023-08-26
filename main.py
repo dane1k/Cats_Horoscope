@@ -45,7 +45,7 @@ def post_forecast():
     chat_id = group_chat_id
     send_forecast(chat_id)
 
-schedule.every().day.at("12:20").do(post_forecast)
+schedule.every().day.at("12:44").do(post_forecast)
 
 if __name__ == "__main__":
     while True:
