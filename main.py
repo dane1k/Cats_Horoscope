@@ -24,6 +24,7 @@ forecast_button = telebot.types.KeyboardButton("Forecasts")
 keyboard.add(forecast_button)
 
 
+# fun for checking and updating work of bot
 @bot.message_handler(commands=['start'])
 def start(message):
     chat_id =  message.chat.id
@@ -34,6 +35,7 @@ def start(message):
     bot.send_message(chat_id, f'- Press the "Forecasts" button below to get a random forecast.', reply_markup=keyboard)
 
 
+# fun for getting forecasts from dictionary (from Zodiac_Sighns)
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
 def send_forecast(message):
     global random_value
@@ -45,18 +47,14 @@ def send_forecast(message):
 
     return f"Thank you for reading our horoscope"
 
+
+# fun for posting the forecasts to group
 def post_forecast():
     chat_id = group_chat_id
     send_forecast(chat_id)
 
 
 schedule.every().day.at("12:49").do(post_forecast)
-
+# running script
 if __name__ == "__main__":
     post_forecast()
-#     while True:
-#         schedule.run_pending()
-#         time.sleep(1)
-
-# # This line starts the bot polling for updates
-# bot.polling()
