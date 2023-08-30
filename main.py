@@ -3,12 +3,19 @@ import random
 import telebot
 import sys
 import os
+import openai
 from Zodiac_Signs import funny_forecasts
+
+# API KEY
+openai.api_key = os.environ.get('OPENAI_API_KEY', 'notapi')
+if openai == 'notapi':
+    sys.exit("API Key not accept")
 
 #bot token 
 TOKEN = os.environ.get('BOT_TELEGRAM_TOKEN_FOR_CODE', 'nothing')
 if TOKEN == 'nothing':
     sys.exit("TOKEN not accept")
+
 
 bot = telebot.TeleBot(TOKEN)
 group_chat_id = '-1001760424253' #
@@ -17,6 +24,15 @@ group_chat_id = '-1001760424253' #
                                  # Choose the answer with 58's rating ('the simplest way i found using only telegram-web :')
                                  #
 
+
+random_value = random.choice(list(funny_forecasts.values()))
+prompt = f"Rephrase the following sentence, making it sound different but retaining the same meaning and add emoji:\n{random_value}"
+response = openai.Completion.create(
+    engine="davinci",
+    prompt=prompt,
+    max_tokens=100
+)
+chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{prompt}"}])
 
 # fun for checking and updating work of bot
 @bot.message_handler(commands=['start'])
@@ -38,7 +54,7 @@ def send_forecast(message):
     chat_id = group_chat_id
     random_key = random.choice(list(funny_forecasts.keys()))
     random_value = funny_forecasts[random_key]
-    bot.send_message(chat_id, f'{random_value}')
+    bot.send_message(chat_id, chat_completion.choices[0].message.content)
     return f"Thank you for reading our horoscope"
 
 
@@ -46,7 +62,6 @@ def send_forecast(message):
 def post_forecast():
     chat_id = group_chat_id
     send_forecast(chat_id)
-
 
 # running script
 if __name__ == "__main__":
