@@ -3,7 +3,9 @@ import random
 import telebot
 import sys
 import os
+import datetime
 import openai
+from phase_moon import calculate_moon_phase
 from Zodiac_Signs import funny_forecasts
 
 # API KEY
@@ -43,11 +45,15 @@ def start(message):
     bot.send_message(chat_id, f'Here are some things you can do:')
     bot.send_message(chat_id, f'- Press the "Forecasts" button below to get a random forecast.', reply_markup=keyboard)
 
+# current Moon phase
+current_date = datetime.datetime.now()
+current_moon_phase = calculate_moon_phase(current_date)
 
 # fun for getting forecasts
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
 def send_forecast(message):
     chat_id = group_chat_id
+    bot.send_message(chat_id, current_moon_phase)
     bot.send_message(chat_id, chat_completion.choices[0].message.content)
     return f"Thank you for reading our horoscope"
 
