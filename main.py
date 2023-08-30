@@ -53,8 +53,7 @@ current_moon_phase = calculate_moon_phase(current_date)
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
 def send_forecast(message):
     chat_id = group_chat_id
-    bot.send_message(chat_id, current_moon_phase)
-    bot.send_message(chat_id, chat_completion.choices[0].message.content)
+    sendforecastvaruable = ("Current moon phase: " + current_moon_phase, f"\n{chat_completion.choices[0].message.content}")
     return f"Thank you for reading our horoscope"
 
 # fun for posting the forecasts to group
