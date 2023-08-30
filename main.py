@@ -46,8 +46,6 @@ def start(message):
     bot.send_message(chat_id, f'- Press the "Forecasts" button below to get a random forecast.', reply_markup=keyboard)
 
 # current Moon phase
-import datetime
-from phase_moon import calculate_moon_phase
 
 current_date = datetime.datetime.now()
 current_month = current_date.month
