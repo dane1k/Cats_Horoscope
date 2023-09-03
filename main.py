@@ -8,6 +8,7 @@ import openai
 from phase_moon import calculate_moon_phase
 from Zodiac_Signs import funny_forecasts
 from loguru import logger
+from loguru import TelegramHandler
 
 # API KEY
 openai.api_key = os.environ.get('OPENAI_API_KEY', 'notapi')
