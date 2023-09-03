@@ -73,8 +73,8 @@ def logs():
     debugg = logger.debug(post_forecast)
     loggerr = logger.info(post_forecast)
     erorrr = logger.error(post_forecast)
-    loggs = f"{debugg}\n{loggerr}\n{erorrr}"
-    bot.send_message(chat_id, loggs)
+    logger.add(chat_id)
+    bot.send_message(chat_id, logger.info(f"{debugg}\n{loggerr}\n{erorrr}"))
 
 # running script
 if __name__ == "__main__":
