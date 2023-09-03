@@ -77,10 +77,7 @@ def logs():
     debugg = logger.debug(post_forecast)
     loggerr = logger.info(post_forecast)
     erorrr = logger.error(post_forecast)
-    bot.send_message(log_chat_id, logger.info(f"{debugg}\n{loggerr}\n{erorrr}"))
-
-# # Теперь можно логировать сообщения
-# logger.info("Это сообщение будет отправлено в группу Telegram")
+    bot.send_message(log_chat_id, f"{debugg}\n{loggerr}\n{erorrr}")
 
 # running script
 if __name__ == "__main__":
