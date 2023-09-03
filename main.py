@@ -67,7 +67,7 @@ def post_forecast():
     send_forecast(chat_id)
 
 @bot.message_handler(commands=['log'])
-def logs(message):
+def logs():
     chat_id = '-1001010641644'
     debugg = logger.debug(post_forecast)
     loggerr = logger.info(post_forecast)
