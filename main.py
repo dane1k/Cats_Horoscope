@@ -69,12 +69,18 @@ def post_forecast():
 
 @bot.message_handler(commands=['log'])
 def logs():
-    chat_id = log_chat_id
+    telegram_handler = TelegramHandler(
+    api_key=TOKEN,
+    chat_id=log_chat_id,
+    )
+    logger.add(telegram_handler)
     debugg = logger.debug(post_forecast)
     loggerr = logger.info(post_forecast)
     erorrr = logger.error(post_forecast)
-    logger.add(chat_id)
-    bot.send_message(chat_id, logger.info(f"{debugg}\n{loggerr}\n{erorrr}"))
+    bot.send_message(log_chat_id, logger.info(f"{debugg}\n{loggerr}\n{erorrr}"))
+
+# # Теперь можно логировать сообщения
+# logger.info("Это сообщение будет отправлено в группу Telegram")
 
 # running script
 if __name__ == "__main__":
