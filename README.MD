@@ -14,6 +14,6 @@ Cats Horoscope is a simple project that provides the user with daily cat horosco
 ## Contribution to the project
   If you have suggestions for improving the project, feel free to create a pull request or report a bug (Issue).
 
-#Author
+## Author
   Danil Borisov
   GitHub: https://github.com/dane1k
