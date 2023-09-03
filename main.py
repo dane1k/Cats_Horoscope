@@ -19,6 +19,7 @@ TOKEN = os.environ.get('BOT_TELEGRAM_TOKEN_FOR_CODE', 'nothing')
 if TOKEN == 'nothing':
     sys.exit("TOKEN not accept")
 bot = telebot.TeleBot(TOKEN)
+log_chat_id = '-1001945815831'
 group_chat_id = '-1001760424253' #
                                  # CHAT GROUP ID: how to find this:
                                  #  https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id
@@ -68,7 +69,7 @@ def post_forecast():
 
 @bot.message_handler(commands=['log'])
 def logs():
-    chat_id = '-1001010641644'
+    chat_id = log_chat_id
     debugg = logger.debug(post_forecast)
     loggerr = logger.info(post_forecast)
     erorrr = logger.error(post_forecast)
