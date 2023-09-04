@@ -83,4 +83,4 @@ def post_forecast():
 # running script
 if __name__ == "__main__":
     post_forecast()
-    logs()
+    # logs()
