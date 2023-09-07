@@ -68,11 +68,12 @@ def post_forecast():
     chat_id = group_chat_id
     send_forecast(chat_id)
 
-
+# send logs to another chat with logs
 @bot.message_handler(func=lambda message: message.text.lower() == "logs")
 def send_logs(message):
     bot.send_message(log_chat_id, f"{logger.debug(post_forecast)}\n{logger.info(post_forecast)}\n{logger.error(post_forecast)}")
 
+#fun for post of logs
 def post_log():
     chat_id = log_chat_id
     send_logs(chat_id)
