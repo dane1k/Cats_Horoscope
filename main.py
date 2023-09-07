@@ -40,9 +40,10 @@ try:
         reply = response['choices'][0]['message']['content']
         print(reply) # response processing
     else:
-        print("ChatGPT returned no response") # handling the case where ChatGPT returned nothing
+        chat_id = log_chat_id
+        bot.send_message(chat_id, 'ChatGPT returned no response') # handling the case where ChatGPT returned nothing
 except Exception as e:
-    print(f"Error has occurred: {e}") # handling other errors, such as if the key is out of date
+    bot.send_message(chat_id, f"Error has occurred: {e}") # handling other errors, such as if the key is out of date
 chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{prompt}"}]) #creating discussion
 
 
