@@ -7,8 +7,8 @@ import datetime
 import openai
 from phase_moon import calculate_moon_phase
 from Zodiac_Signs import funny_forecasts
-# from loguru import logger
-# from loguru import TelegramHandler
+from loguru import logger
+
 
 # API KEY
 openai.api_key = os.environ.get('OPENAI_API_KEY', 'notapi')
@@ -68,19 +68,17 @@ def post_forecast():
     chat_id = group_chat_id
     send_forecast(chat_id)
 
-# @bot.message_handler(commands=['log'])
-# def logs():
-#     telegram_handler = TelegramHandler(
-#     api_key=TOKEN,
-#     chat_id=log_chat_id,
-#     )
-#     logger.add(telegram_handler)
-#     debugg = logger.debug(post_forecast)
-#     loggerr = logger.info(post_forecast)
-#     erorrr = logger.error(post_forecast)
-#     bot.send_message(log_chat_id, f"{debugg}\n{loggerr}\n{erorrr}")
 
+@bot.message_handler(func=lambda message: message.text.lower() == "logs")
+def send_logs(message):
+    bot.send_message(log_chat_id, f"{logger.debug(post_forecast)}\n{logger.info(post_forecast)}\n{logger.error(post_forecast)}")
+
+def post_log():
+    chat_id = log_chat_id
+    send_logs(chat_id)
+    
 # running script
 if __name__ == "__main__":
     post_forecast()
-    # logs()
+    post_log()
+    
