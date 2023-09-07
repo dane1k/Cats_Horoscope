@@ -30,20 +30,11 @@ group_chat_id = '-1001760424253' #
 # Question for the chatGPT *prompt* and choose random funny forecast
 random_value = random.choice(list(funny_forecasts.values()))
 prompt = f"Rephrase the following sentence, making it sound different but retaining the same meaning and add emoji:\n{random_value}"
-try:
-    response = openai.Completion.create(
+response = openai.Completion.create(
     engine="davinci", # Model
     prompt=prompt,
     max_tokens=100
 )
-    if response['choices'][0]['message']['content']:
-        reply = response['choices'][0]['message']['content']
-        print(reply) # response processing
-    else:
-        chat_id = log_chat_id
-        bot.send_message(chat_id, 'ChatGPT returned no response') # handling the case where ChatGPT returned nothing
-except Exception as e:
-    bot.send_message(chat_id, f"Error has occurred: {e}") # handling other errors, such as if the key is out of date
 chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{prompt}"}]) #creating discussion
 
 
