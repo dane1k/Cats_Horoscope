@@ -60,7 +60,7 @@ def start(message):
 # current Moon phase
 current_date = datetime.datetime.now()
 current_month = current_date.month
-current_day = current_date.day 
+current_day = current_date.day
 current_year = current_date.year
 current_moon_phase = calculate_moon_phase(current_year,current_month, current_day)
 
