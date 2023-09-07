@@ -70,16 +70,19 @@ def post_forecast():
 
 # send logs to another chat with logs
 @bot.message_handler(func=lambda message: message.text.lower() == "logs")
-def send_logs(message):
-    bot.send_message(log_chat_id, f"{logger.debug(post_forecast)}\n{logger.info(post_forecast)}\n{logger.error(post_forecast)}")
-
-#fun for post of logs
-def post_log():
+def send_logs():
+    log_content = ""
+    log_content += f"{logger.debug}\n"
+    log_content += f"{logger.info}\n"
+    log_content += f"{logger.warning}\n"
+    log_content += f"{logger.error}\n"
+    log_content += f"{logger.exception}\n"
+    
     chat_id = log_chat_id
-    send_logs(chat_id)
+    bot.send_message(chat_id, log_content)
     
 # running script
 if __name__ == "__main__":
     post_forecast()
-    post_log()
+    send_logs()
     
