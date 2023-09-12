@@ -80,9 +80,9 @@ def send_logs():
     log_content = ""
     log_content += f"Debug logs🐱: {logger.debug}\n"
     log_content += f"\nInfo logs🐈: {logger.info}\n"
-    log_content += f"\nWarning logs🐱: {logger.warning}\n"
-    log_content += f"\nError logs🐈: {logger.error}\n"
-    log_content += f"\nException logs🐱: {logger.exception}\n"
+    log_content += f"\nWarning logs😾: {logger.warning}\n"
+    log_content += f"\nError logs🙀: {logger.error}\n"
+    log_content += f"\nException logs💣: {logger.exception}\n"
     
     chat_id = log_chat_id
     bot.send_message(chat_id, log_content)
