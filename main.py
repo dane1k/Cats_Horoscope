@@ -10,23 +10,27 @@ from Zodiac_Signs import funny_forecasts
 from loguru import logger
 
 
-# API KEY
-openai.api_key = os.environ.get('OPENAI_API_KEY', 'notapi')
-if openai == 'notapi':
-    sys.exit("API Key not accept")
-
-# BOT Token
-TOKEN = os.environ.get('BOT_TELEGRAM_TOKEN_FOR_CODE', 'nothing')
-if TOKEN == 'nothing':
-    sys.exit("TOKEN not accept")
-    
-bot = telebot.TeleBot(TOKEN)
+# ID of groups
 log_chat_id = '-1001945815831'
 group_chat_id = '-1001760424253' #
                                  # CHAT GROUP ID: how to find this:
                                  #  https://stackoverflow.com/questions/32423837/telegram-bot-how-to-get-a-group-chat-id
                                  # Choose the answer with 58's rating ('the simplest way i found using only telegram-web :')
                                  #
+
+# BOT Token
+TOKEN = os.environ.get('BOT_TELEGRAM_TOKEN_FOR_CODE', 'nothing')
+bot = telebot.TeleBot(TOKEN)
+if TOKEN == 'nothing':
+    bot.send_message(log_chat_id, 'TOKEN not accept')
+    sys.exit("TOKEN not accept")
+
+# API KEY
+openai.api_key = os.environ.get('OPENAI_API_KEY', 'notapi')
+if openai.api_key == 'notapi':
+    bot.send_message(log_chat_id, 'TOKEN not accept')
+    sys.exit("API Key not accept")
+
 
 # Question for the chatGPT *prompt* and choose random funny forecast
 random_value = random.choice(list(funny_forecasts.values()))
