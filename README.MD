@@ -1,6 +1,7 @@
 # Cats Horoscope
 
 Cats Horoscope is all about harnessing the power of the moon to deliver customized horoscopes using OpenAI's chatGPT model. And the best part? You can share these cosmic insights with your Telegram community.
+Link of Telegram channel: https://t.me/Cats_Horoscope
 
 ## Where to Find It?
 
