@@ -19,6 +19,7 @@ if openai == 'notapi':
 TOKEN = os.environ.get('BOT_TELEGRAM_TOKEN_FOR_CODE', 'nothing')
 if TOKEN == 'nothing':
     sys.exit("TOKEN not accept")
+    
 bot = telebot.TeleBot(TOKEN)
 log_chat_id = '-1001945815831'
 group_chat_id = '-1001760424253' #
