@@ -42,6 +42,13 @@ response = openai.Completion.create(
 )
 chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{prompt}"}]) #creating discussion
 
+# current Moon phase
+current_date = datetime.datetime.now()
+current_month = current_date.month
+current_day = current_date.day
+current_year = current_date.year
+current_moon_phase = calculate_moon_phase(current_year,current_month, current_day)
+
 
 # fun for checking and updating work of bot into privat messages *this is just for self-debugging*
 @bot.message_handler(commands=['start'])
@@ -53,13 +60,6 @@ def start(message):
     bot.send_message(chat_id, f'Hi, I\'m a bot that can provide you with funny forecasts!')
     bot.send_message(chat_id, f'Here are some things you can do:')
     bot.send_message(chat_id, f'- Press the "Forecasts" button below to get a random forecast.', reply_markup=keyboard)
-
-# current Moon phase
-current_date = datetime.datetime.now()
-current_month = current_date.month
-current_day = current_date.day
-current_year = current_date.year
-current_moon_phase = calculate_moon_phase(current_year,current_month, current_day)
 
 # fun for getting forecasts
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
