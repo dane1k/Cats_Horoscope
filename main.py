@@ -34,6 +34,7 @@ if openai.api_key == 'notapi':
 
 # Question for the chatGPT *prompt* and choose random funny forecast
 random_value = random.choice(list(funny_forecasts.values()))
+random_key = next(key for key, value in funny_forecasts.items() if value == random_value)
 prompt = f"Rephrase the following sentence, making it sound different but retaining the same meaning and add emoji:\n{random_value}"
 response = openai.Completion.create(
     engine="davinci", # Model
@@ -41,6 +42,17 @@ response = openai.Completion.create(
     max_tokens=100
 )
 chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{prompt}"}]) #creating discussion
+
+# text promt to DALL-E
+image_discription = f'Generate the picture of {random_key} in cat\'s style'
+# request to AI DALL-E
+response = openai.Image.create(
+  model="image-alpha-001",
+  n=1,
+  prompts=image_discription 
+)
+url_send_image = response.data[0]['url']
+image_send = openai.Image.create(model="image-alpha-001", prompt=f"{image_discription}")
 
 # current Moon phase
 current_date = datetime.datetime.now()
@@ -65,7 +77,7 @@ def start(message):
 @bot.message_handler(func=lambda message: message.text.lower() == "forecasts")
 def send_forecast(message):
     chat_id = group_chat_id
-    sendforecastvaruable = (f"Purrs and whiskers! It looks like we're in the midst of {current_moon_phase}, so it's time for some serious rub-a-dub forecast, my feline friends!" + f"\n{chat_completion.choices[0].message.content}")
+    sendforecastvaruable = (f"{image_send}\nPurrs and whiskers! It looks like we're in the midst of {current_moon_phase}, so it's time for some serious rub-a-dub forecast, my feline friends!" + f"\n{chat_completion.choices[0].message.content}")
     bot.send_message(chat_id, sendforecastvaruable)
     return f"Thank you for reading our horoscope"
 
