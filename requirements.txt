@@ -16,5 +16,5 @@ schedule==1.2.0
 telebot==0.0.5
 telegram==0.0.1
 tqdm==4.66.1
-urllib3==2.2.2
+urllib3==2.5.0
 yarl==1.9.2
